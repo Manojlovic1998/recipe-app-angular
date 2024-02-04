@@ -9,6 +9,7 @@
             id="name"
             class="form-control"
             placeholder="Name"
+            #nameInput
           />
         </div>
         <div class="col-12 form-group mt-2">
@@ -18,12 +19,19 @@
             id="amount"
             class="form-control"
             placeholder="Amount"
+            #amountInput
           />
         </div>
       </div>
       <div class="row mt-2">
         <div class="col-12 d-flex">
-          <button class="btn btn-primary ms-auto" type="submit">Add</button>
+          <button
+            class="btn btn-primary ms-auto"
+            type="submit"
+            (click)="onAddItem()"
+          >
+            Add
+          </button>
           <button class="btn btn-danger ms-2" type="button">Delete</button>
           <button class="btn btn-secondary ms-2" type="button">Clear</button>
         </div>

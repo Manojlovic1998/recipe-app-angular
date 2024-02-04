@@ -14,6 +14,10 @@ export class ShoppingListComponent {
     this.generateIngredients();
   }
 
+  onIngredientAdded(ingredient: Ingredient) {
+    this.ingredients.push(ingredient);
+  }
+
   private generateIngredients() {
     for (let i = 0; i < 3; i++) {
       this.ingredients.push(this.generateIngredient());
