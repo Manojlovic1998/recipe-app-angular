@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Recipe } from '../recipe.model';
 import { faker } from '@faker-js/faker';
 
@@ -9,9 +9,14 @@ import { faker } from '@faker-js/faker';
 })
 export class RecipeListComponent {
   recipes: Recipe[] = [];
+  @Output() recipeSelected = new EventEmitter<Recipe>();
 
   constructor() {
     this.generateRecipes();
+  }
+
+  onRecipeSelected(recipe: Recipe) {
+    this.recipeSelected.emit(recipe);
   }
 
   private generateRecipes() {
