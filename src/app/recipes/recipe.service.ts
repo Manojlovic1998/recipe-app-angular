@@ -1,8 +1,10 @@
+import { EventEmitter } from '@angular/core';
 import { Recipe } from './recipe.model';
 import { faker } from '@faker-js/faker';
 
 export class RecipeService {
   private recipes: Recipe[] = [];
+  recipeSelected = new EventEmitter<Recipe>();
 
   constructor() {
     this.generateRecipes();
