@@ -16,8 +16,4 @@ export class RecipesComponent {
       this.recipeSelected = recipe;
     });
   }
-
-  onRecipeSelected($event: Recipe) {
-    this.recipeSelected = $event;
-  }
 }
