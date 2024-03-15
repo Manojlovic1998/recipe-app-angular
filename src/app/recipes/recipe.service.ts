@@ -29,12 +29,13 @@ export class RecipeService {
 
   private generateRecipes() {
     for (let i = 0; i < 3; i++) {
-      this.recipes.push(this.generateRecipe());
+      this.recipes.push(this.generateRecipe(i));
     }
   }
 
-  private generateRecipe() {
+  private generateRecipe(id: number) {
     return new Recipe(
+      id,
       faker.lorem.words(),
       faker.lorem.paragraph(),
       faker.image.urlLoremFlickr({ category: 'food', width: 300, height: 300 }),
