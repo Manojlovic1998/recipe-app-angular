@@ -1,10 +1,9 @@
-import { EventEmitter } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
-import { faker } from '@faker-js/faker';
+import { Subject } from 'rxjs';
 
 export class ShoppingListService {
   private ingredients: Ingredient[] = [];
-  ingredientAdded = new EventEmitter<Ingredient[]>();
+  ingredientAdded = new Subject<Ingredient[]>();
 
   constructor() {}
 
@@ -15,7 +14,7 @@ export class ShoppingListService {
 
   addIngredient(ingredient: Ingredient) {
     this.ingredients.push(ingredient);
-    this.ingredientAdded.emit(this.ingredients.slice());
+    this.ingredientAdded.next(this.ingredients.slice());
   }
 
   addIngredients(ingredients: Ingredient[]) {
@@ -23,6 +22,6 @@ export class ShoppingListService {
     this.ingredients = [];
     // Add ingredients to shopping list
     this.ingredients.push(...ingredients);
-    this.ingredientAdded.emit(this.ingredients.slice());
+    this.ingredientAdded.next(this.ingredients.slice());
   }
 }
