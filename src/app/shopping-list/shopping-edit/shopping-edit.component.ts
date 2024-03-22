@@ -17,7 +17,7 @@ export class ShoppingEditComponent {
   onAddItem(f: NgForm) {
     console.log(f);
     const name = f.value.name;
-    const amount = Number(f.value.amount);
+    const amount = f.value.amount;
     const ingredient = new Ingredient(name, amount);
 
     this.shoppingListService.addIngredient(ingredient);
