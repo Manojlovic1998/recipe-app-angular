@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-12 col-md-5">
-    <form class="border p-2 rounded" (ngSubmit)="onAddItem(f)" #f="ngForm">
+    <form class="border p-2 rounded" (ngSubmit)="onSubmit(f)" #f="ngForm">
       <div class="row flex-column">
         <div class="col-12 form-group">
           <label for="name">Name</label>
@@ -37,7 +37,7 @@
             type="submit"
             [disabled]="!f.valid"
           >
-            Add
+            {{ editMode ? "Update" : "Add" }}
           </button>
           <button class="btn btn-danger ms-2" type="button">Delete</button>
           <button class="btn btn-secondary ms-2" type="button">Clear</button>
