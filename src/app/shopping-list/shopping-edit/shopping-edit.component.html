@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-12 col-md-5">
+  <div class="col-12 col-md-6">
     <form class="border p-2 rounded" (ngSubmit)="onSubmit(f)" #f="ngForm">
       <div class="row flex-column">
         <div class="col-12 form-group">
@@ -39,8 +39,21 @@
           >
             {{ editMode ? "Update" : "Add" }}
           </button>
-          <button class="btn btn-danger ms-2" type="button">Delete</button>
-          <button class="btn btn-secondary ms-2" type="button">Clear</button>
+          <button
+            class="btn btn-danger ms-2"
+            type="button"
+            (click)="onDelete()"
+            *ngIf="editMode"
+          >
+            Delete
+          </button>
+          <button
+            class="btn btn-secondary ms-2"
+            type="button"
+            (click)="onClear()"
+          >
+            Clear
+          </button>
         </div>
       </div>
     </form>
