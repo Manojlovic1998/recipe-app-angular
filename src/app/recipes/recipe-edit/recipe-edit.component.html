@@ -24,11 +24,12 @@
             class="form-control mt-2"
             placeholder="Image Url"
             formControlName="imagePath"
+            #imagePath
           />
         </div>
         <div class="col-12">
           <img
-            src="#"
+            [src]="imagePath.value"
             alt="Image preview"
             class="object-fit-cover w-100 h-100 rounded-start mt-2"
             height="300"
