@@ -21,7 +21,6 @@ export class RecipeService {
 
   getRecipes() {
     // New array with the same elements
-    console.log('getRecipes');
     return this.recipes.slice();
   }
 
