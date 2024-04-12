@@ -14,6 +14,11 @@ export class RecipeService {
     this.generateRecipes();
   }
 
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
   getRecipes() {
     // New array with the same elements
     console.log('getRecipes');
