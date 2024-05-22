@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { inject } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   ResolveFn,
@@ -6,9 +6,12 @@ import {
 } from '@angular/router';
 import { Recipe } from './recipe.model';
 import { RecipeService } from './recipe.service';
-import { DataStorageService } from '../shared/data-storage.service';
+import {
+  DataStorageService,
+  EdmanRecipe,
+} from '../shared/data-storage.service';
 
-export const RecipesResolver: ResolveFn<Recipe[]> = (
+export const RecipesResolver: ResolveFn<(Recipe | EdmanRecipe)[]> = (
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot
 ) => {

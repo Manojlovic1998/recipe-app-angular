@@ -47,8 +47,8 @@ export class RecipeEditComponent implements OnInit {
   onAddIngredient() {
     (<FormArray>this.recipeForm.get('ingredients')).push(
       new FormGroup({
-        name: new FormControl(null, [Validators.required]),
-        amount: new FormControl(null, [
+        text: new FormControl(null, [Validators.required]),
+        quantity: new FormControl(null, [
           Validators.required,
           Validators.pattern(/^[1-9]+[0-9]*$/),
         ]),
@@ -65,22 +65,35 @@ export class RecipeEditComponent implements OnInit {
   }
 
   private initForm() {
-    let recipeName = '';
-    let recipeDescription = '';
-    let recipeImagePath = '';
-    let recipeIngredients = new FormArray([], Validators.required);
+    // Sensible defaults
+    let label = '';
+    let image = '';
+    let source = ''; // Not used
+    let url = ''; // Not used
+    let shareAs = ''; //  Not used
+    let dietLabels = []; // Not used
+    let ingredientLines = []; // Not used
+    let ingredients = new FormArray([], Validators.required);
+    let calories = ''; // Not used
+    let totalWeight = ''; // Not used
+    let totalTime = ''; // Not used
+    let cuisineType = ''; // Not used
+    let mealType = ''; // Not used
+    let dishType = ''; // Not used
+    let tags = ''; // Not used
 
     if (this.editMode) {
+      // Get the recipe from the recipe service
       const recipe = this.recipeService.getRecipe(this.id);
-      recipeName = recipe.name;
-      recipeImagePath = recipe.imagePath;
-      recipeDescription = recipe.description;
+      // Set the recipe values to the form
+      label = recipe.label;
+      image = recipe.image;
       if (recipe['ingredients']) {
         for (let ingredient of recipe.ingredients) {
-          recipeIngredients.push(
+          ingredients.push(
             new FormGroup({
-              name: new FormControl(ingredient.name, [Validators.required]),
-              amount: new FormControl(ingredient.amount, [
+              text: new FormControl(ingredient.text, [Validators.required]),
+              quantity: new FormControl(ingredient.quantity, [
                 Validators.required,
                 Validators.pattern(/^[1-9]+[0-9]*$/),
               ]),
@@ -91,10 +104,9 @@ export class RecipeEditComponent implements OnInit {
     }
 
     this.recipeForm = new FormGroup({
-      name: new FormControl(recipeName, [Validators.required]),
-      imagePath: new FormControl(recipeImagePath, [Validators.required]),
-      description: new FormControl(recipeDescription, [Validators.required]),
-      ingredients: recipeIngredients,
+      label: new FormControl(label, [Validators.required]),
+      image: new FormControl(image, [Validators.required]),
+      ingredients: ingredients,
     });
   }
 }

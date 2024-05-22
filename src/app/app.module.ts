@@ -15,7 +15,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { RecipeService } from './recipes/recipe.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthComponent } from './auth/auth.component';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { AuthInterceptorService } from './auth/auth-interceptor.service';
+import { PermissionService } from './auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -29,8 +33,19 @@ import { HttpClientModule } from '@angular/common/http';
     RecipeItemComponent,
     RecipeStartComponent,
     RecipeEditComponent,
+    AuthComponent,
+    SpinnerComponent,
   ],
-  providers: [ShoppingListService, RecipeService],
+  providers: [
+    ShoppingListService,
+    RecipeService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+    PermissionService,
+  ],
   imports: [
     BrowserModule,
     FormsModule,

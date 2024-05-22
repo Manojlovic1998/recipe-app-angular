@@ -1,9 +1,15 @@
 export class Ingredient {
-  public name: string;
-  public amount: number;
+  public text: string;
+  public quantity: number;
+  public measure: string;
+  public food: string;
+  public weight: number;
+  public foodCategory: string;
+  public foodId: string;
+  public image: string;
 
-  constructor(name: string, amount: number) {
-    this.name = name;
-    this.amount = amount;
+  constructor(text: string, quantity: number) {
+    this.text = text;
+    this.quantity = quantity;
   }
 }
