@@ -13,25 +13,18 @@ import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { PermissionService } from './auth/auth.guard';
 import { RecipesModule } from './recipes/recipes.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
+import { CoreModule } from './core.module';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, AuthComponent],
-  providers: [
-    ShoppingListService,
-    RecipeService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptorService,
-      multi: true,
-    },
-    PermissionService,
-  ],
+  providers: [],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
+    CoreModule,
     RecipesModule,
     ShoppingListModule,
   ],
