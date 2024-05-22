@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-12 col-lg-6 mx-auto mt-5">
+    <div class="alert alert-danger" *ngIf="error">
+      <p class="m-0">{{ error }}</p>
+    </div>
+    <form
+      class="border rounded px-4 pb-5"
+      #authForm="ngForm"
+      (ngSubmit)="onSubmit(authForm)"
+    >
+      <div class="row">
+        <div class="col-12 text-center my-3">
+          <h2>{{ isLoginMode ? "Login" : "Sign Up" }}</h2>
+        </div>
+        <div class="col-12 mt-5 text-center" *ngIf="isLoading">
+          <app-spinner></app-spinner>
+        </div>
+      </div>
+      <div class="row flex-column" *ngIf="!isLoading">
+        <div class="col-12 form-group">
+          <label for="email">E-Mail</label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            class="form-control"
+            ngModel
+            required
+            email
+          />
+        </div>
+        <div class="col-12 form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            ngModel
+            required
+            password
+            minlength="6"
+          />
+        </div>
+
+        <div class="col-12 mt-3">
+          <button
+            class="btn btn-primary w-100"
+            type="submit"
+            [disabled]="!authForm.valid"
+          >
+            {{ isLoginMode ? "Login" : "Sign Up" }}
+          </button>
+        </div>
+        <div class="col-12 mt-2">
+          <button
+            class="btn btn-secondary w-100"
+            type="button"
+            (click)="onSwitchMode()"
+          >
+            {{ isLoginMode ? "Go to Sign up" : "Go to Login" }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
