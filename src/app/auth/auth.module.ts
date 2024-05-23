@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { AuthComponent } from './auth.component';
-import { AuthRoutingModule } from './auth-routing.model';
+import { AuthRoutingModule } from './auth-routing.module';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
